@@ -1,11 +1,13 @@
 name: Update cpanfile.snapshot
 on:
     schedule:
-        - cron: "1 15 * * 0"
+        - cron: "*/30 * * * *"
     workflow_dispatch:
 jobs:
     update-dep:
         runs-on: "ubuntu-20.04"
+        container:
+            image: perl:5.36
         steps:
             - uses: actions/checkout@v2
             - name: Install Carton
